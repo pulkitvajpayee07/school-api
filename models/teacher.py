@@ -5,7 +5,7 @@ from models.user import UserModel
 class TeacherModel(UserModel):
     id = db.Column(db.Integer, db.ForeignKey(
         'user_model.id'), primary_key=True)
-    allowed = db.Boolean(False)
+    allowed = db.Column(db.Boolean(), default=False)
 
     __mapper_args__ = {
         'polymorphic_identity': 'teacher',
@@ -25,7 +25,7 @@ class TeacherModel(UserModel):
             'id': self.id,
             'email': self.email,
             'type': self.type,
-            'allowed': "true" if self.allowed else "false"
+            'allowed': self.allowed
         }
 
     @classmethod
