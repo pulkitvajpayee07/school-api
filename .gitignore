@@ -1,0 +1,7 @@
+Pipfile.lock
+
+.vscode/
+
+__pycache__/
+
+data.db
